@@ -8,12 +8,16 @@ const html = response.body;
 const $ = cheerio.load(html);
 
 const title = $('h1').text().trim();
+const link = $('div[class*="Product__cols"] link').attr('href');
+const imagelink = $('div[class*="ProductGallery__image"] a').attr('href');
 const price = $('span.Price__value').text().trim();
 const reviewCount = $('div[class*="Product__rating"] div.Rating__text').text().trim();
 const description = $('div[class*="Product__Block"] div.rtext').text().trim();
 
 const product = {
     title,
+    link,
+    imagelink,
     price,
     reviewCount,
     description
